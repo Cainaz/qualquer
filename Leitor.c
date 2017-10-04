@@ -10,7 +10,7 @@ uint8_t *lerArquivo(const char narq,uint8_t *memory, int pc){
     FILE *fp = fopen(narq, "rb");
     if (fp == NULL)
     {
-      puts ("Error\n");
+      puts ("Error 404 not found \n");
       fclose (fp);
     }
     fread(memory, 1,256,fp);
@@ -18,7 +18,21 @@ uint8_t *lerArquivo(const char narq,uint8_t *memory, int pc){
     return memory;
 }
 
-void carregarMemoria(){
+void carregarMemoria(uint8_t memory[], int pc){
+    for(int i=0; i < sizeof(memory[]); i++){
+        if (memory[i] != NULL){
+            switch(memory[i]){
+                case 0: //nop
+                break;
+                case 10: //sta
+                break;
+                case 20: //lda
+                break;
+
+            }
+        
+        }
+    }
     
 }
 
@@ -42,7 +56,7 @@ int main(int argc, char argv[]){
     printf("%s:%d\n",narq,pc);
 
     uint8_t *lerArquivo(const char narq, uint8_t *memory,int pc);
-    void carregarMemoria();
+    void carregarMemoria(uint8_t memory[],int pc);
     void simular();
     
 return 0;
